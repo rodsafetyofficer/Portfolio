@@ -1,0 +1,84 @@
+/*CSS ANIMATION PART
+   There are two types of animation in css, 
+   First one is using the transition property and then change the properties that we want to animate
+   on an event like when we hover on an element.*/
+   /*Another tip would be when we dont want this animation to happen when we load the page
+   we would like the animation to happen when we hover. Lets say we want the animation to happen
+   to the logo
+   .logo:hover {
+      animation: moveInRight 1s ease-out;
+      the Animation can be made to happen when we move to the logo. 
+   } */
+   @keyframes moveInLeft {
+    /*we can specify here in each moment of time when the animation will happen.*/
+    /*This is when the animation will start - initial state*/
+    0% {
+      opacity: 0;
+      transform: translateX(-10rem); /*Remember that the element will be coming from the left.*/
+      /*We use the translateX x is because we want it to animate from the x direction. Left to right. 
+      While the Y direction is from TOP to BOTTOM.*/
+      /*We want it coming from the left in the beginning so we give it negative value*/
+      /*Remember that a negative value goes to the left
+       and a positive value goes to the right like in mathematics.*/
+    
+    }
+    
+    60% {
+      transform: rotate(180deg);
+    }
+  
+    /*We can also put some animation in the middle, like when at the moment when the animation is
+    at 80%, we can do any percentage here that we want.*/
+    80% {
+      transform: translateX(1rem); /*This allows us to move a little to the right 
+      our animation before positioning itself at 100%- this intermediate position is 
+      a bit more to the right. Remember that a positive value goes to the right.*/
+  
+    }
+    /*This is when the animation will end - final state*/
+    100% {
+      opacity:1;
+      transform: translate(0); /*We just want to make it look the way it looks now
+      so we use Translate 0. Why zero because when we translate to zero it will look exactly
+      the way it looks right now.
+      */
+    
+    }
+    /*Note that for browser performance it is best to animate only two different properties
+    one is the opacity, and the transform property. This is what the browsers are optimize 
+    for. We can do alot from this two properties to make animation happen.
+    */
+   
+    /*Remember that for an animation to work there are two properties we need to specify
+    animation-name: which is the name of the animation we just wrote "moveInLeft" 
+    and animation-duration.
+    */
+  }
+  
+  @keyframes moveInRight {
+    0%{
+      opacity: 0;
+      transform: translateX(10rem); /* 100px divide by 10=1rem */
+    }
+    80%{
+      transform:translateX(-1rem);
+    }
+    100%{
+      opacity: 1;
+      transform: translate(0);
+    } 
+  }
+  
+  /*we want this animation to happen on this particular button so we 
+  put a new class on the button. animated.*/
+  @keyframes moveInBottom {
+    0%{
+      opacity: 0;
+      transform: translateY(-3rem); /*epsilon move up with a positive value and down with
+      a negative value.*/
+    }
+    100%{
+      opacity: 1;
+      transform: translate(0);
+    } 
+  }

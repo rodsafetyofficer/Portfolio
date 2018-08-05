@@ -1,0 +1,143 @@
+
+   .btn{ 
+    &,
+    &:link, 
+    &:visited {
+      text-transform: uppercase;
+      text-decoration: none ;
+      padding: 1.5rem 4rem ; 
+      display: inline-block;
+      border-radius: 10rem; /*this adds the rounded corners*/
+      transition: all .2s; 
+      position: relative;
+      font-size: 1.6rem;
+
+      //change for the button element
+      border: none;
+      cursor: pointer;
+      
+      
+ 
+    }
+    &:hover {
+     
+      transform: translateY(-.7px); /*remember that the Y value moves up with - value and down with
+      + value.*/
+      box-shadow:0 1rem 2rem rgba($color-black,.2); 
+      &::after {
+        transform:scaleX(1.4) scaleY(1.6);/*scale simply increases the element, if we do scale(2) it will do double
+        the size as to before.
+        We want to animate this property so we need to do it in the initial state sto the initial
+        state is the &::after element
+        scale without any epsilon scales the entire element so if we use scaleX() it will scale on the 
+        x direction. There are different scales just like there are different 
+        translates, rotates or functions we can put into our transform...
+        */
+        
+        opacity: 0; /*The technique for fading something out it sets something to invisible.*/
+         
+      }
+      
+    }
+    
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translate(-1px); 
+      box-shadow: 0 .5rem 1rem rgba($color-black,.2); 
+    }
+
+
+    &--white {
+      background-color: $color-white;
+      color: $color-black;  
+
+      &::after {
+        background-color: $color-white;
+      }
+      
+    }
+
+    &--turqouise {
+      background-color: $color-secondary-light;
+      color: $color-white;  
+      width:95%;
+      text-align: center;
+
+      &::after {
+        background-color: $color-secondary-light;
+      }
+      
+    }
+    
+    /*BUTTON part 2*/
+    /*Pseudo element
+    A white part on the button that zooms out when we hover in and out.
+    -Allows us to style a certain parts of the elements.
+    -The after pseudo element adds a virtual element right after the element we are selecting.
+    We can then start to style that element.
+    - 
+    */
+
+    &::after {
+      /*the trick here is to add an element that looks exactly the button that we have and we 
+      put it behind the button and when we hover out of the button then the hidden pseduo element 
+      basically hide behind the button.*/
+      /*We always need to specify the content property doesnt matter what the content is
+      even if its empty but we have to specify it or otherwise it is not going to appear.*/
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute; 
+      top: 0;
+      left: 0;
+      /*we need to set the z-index to minus 1*/
+      z-index: -1; /*the z-index defines the position of the element if they are
+      one on top of another. So this one is -1 so it gets behind the button.*/
+      transition: all .4s; /*we want this to take a little longer than the other one.*/
+    }
+    /*We need to create &-white::after IT will look like its part of our element. We want to 
+    put it behind our actual button. HOw can we do it? We use the absolute positioning.*/
+    
+    
+    &--animated {
+      animation: moveInBottom 1s ease-out .75s;
+      animation-fill-mode: backwards; 
+        
+    }
+
+
+   }
+
+   .btn-text {
+     &:link,
+     &:visited {
+       color: $color-primary-light;
+       display: inline-block;
+       text-decoration: none;
+       border-bottom: 1px solid $color-primary-light;
+       padding: 3px;
+       font-size: $default-font-size;
+       transition: all .2s;
+     }
+
+     &:hover {
+        background-color: $color-primary-light;
+        color: $color-primary-dark;
+        box-shadow: 0 1rem 2rem rgba($color-primary-light, .15);
+        transform: translateY(-2px);
+     }
+
+     &:active{
+      box-shadow: 0 .5rem 1rem rgba($color-primary-light, .15);
+      transform: translateY(0);
+     }
+
+
+     
+
+
+
+   }

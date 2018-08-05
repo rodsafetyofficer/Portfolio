@@ -1,0 +1,440 @@
+/*
+Dark
+#46211A crevice
+  #693D3D cloud shadow
+  #BA5536 desert
+  #A43820 redclay
+Playful green & blues
+  #324851 blue pine
+  #86AC41 new grass
+  #34675C reflection
+  #7DA3A1 mist
+Fresh and Energetic
+  #4CB5F5 blue sky
+  #B7B8B6 granite
+  #34675C pine
+  #B3C100 fields
+
+Icy blue and Grays
+ #F1F1F2 overcast
+ #BCBABE warm gray
+ #A1D6E2 ice
+ #1995AD glacier blue
+*/
+/*WHY WE WANT ALL px units to be converted to REM, this is because
+we want an easy way to change all the measurements in our page with 
+one simple setting. For example when we hit a breakpoint to display
+our page in a mobile device when that happens we want a way to decrease 
+all the measurement in our site at the same time. Instead of writing
+hundreds of lines of codes in the media querries we can just change
+one global setting and that is the global font size.
+We will change all absolute px units to relative rem units. */
+*, ::after, ::before  {
+ margin: 0;
+ padding: 0;
+ box-sizing: inherit; /* remember how we can use the inherit keyword to force inheritance.
+ this is considered as a slightly best practice of the css community.
+ It makes it easier to change the box-sizing line in the plugins and components where we want to 
+ use a different property for box-sizing. It doesn't make a huge difference
+ just a slightly better practice to do the box-sizing border box. We
+ can also update. the universal selector by selecting all of the ::after pseudo elements. and also 
+ all the ::before pseudo elements. Because right now only the real elements
+ are the one that gets the value of margin and paddings and the after and before don't get
+ this behaviour. Since we dont want to see any strange behaviour happening we also include these
+ in the universal selector code block.
+ AFTER wouldn't have worked the way we expect it if it was not included in our
+ global reset.
+
+ 
+ */
+}
+
+/*The rem unit
+is always in relation to the
+root font size so if we then set that root font size
+we can then easily change all the other measurements to rem.
+Remember that the root font size is set in the html selector*/
+html {
+  font-size: 37.5%;/*why do we do change it to 10px? We do 10 px to make
+  our life easier, we know that 1 rem is = to 10px. Remember that 1 rem
+  is exactly the root font size. SO if  10px is now the root font-size then 
+  1 rem is 10px and it will be real easy to replace all the px units with 
+  rem because all we have to do is to divide all the pixels by 10 and 
+  thats all rem now if it was 16px then we will need to make a lot of 
+  calculations. And we dont want to do that. This is a pretty common 
+  technique. Change most if not all.
+  */
+  /* Note: it is considered bad practice to set the the font-size to pixels 
+  The problem here is that we overwrite the browser settings
+  that the user can manually change in the settings. Many users do this when they have bad
+  sights and they cannot see so good. They would increase the default size. 
+  So if we change the default size they can no longer change the font-size.
+  We need to set the default root font-size to a percentage. Which will translate to a 
+  percentage of the font-size given by the browser, now the defaut font-size if the user
+  doesn't change anything which is the initial situation that we want is 16 px that is the
+  absolute default that is the situation that we are counting on. so if we put 100% this would
+  mean that the root font size would be 16px if the user doesnt change anything, and if the user
+  does change the default font-size lets say to 18 px then the root font size will be 80% and so
+  on but we dont want 16px here what we want is 10 px. 
+  All we have to do is to divide what we want from 10px divided by 16px = 62.5%. here what we did
+  is 6 divided by 16px;
+  rem is not supported below internet explorer 9. 
+   */
+
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    /*font-family: 'Lobster', cursive;*/
+    font-weight: 400;
+   /* font-size: 16px; this was change to 10px*/ 
+    line-height: 1.7;
+    color: white;
+    padding: 3rem; /*30 divide by 10 = 3rem*/
+    box-sizing: border-box;
+
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom,
+        rgba(247, 236, 154, 0.8),
+        rgba(18, 27, 112, 0.8) ), 
+     url(../img/Cidemo.jpg);
+    background-size: cover; 
+    background-position:top;
+    clip-path:polygon(0 0, 100% 0, 100% 75vh, 0 50%);
+    position: relative;
+    
+}
+
+.header__logo-box {
+  position:  absolute;  
+  top: 2rem; /*30 divide by 10 = 3rem*/
+  left: 3rem;/*30 divide by 10 = 3rem*/
+  
+}
+
+.header__logo {
+  /* height: 14rem; */ /* 50divide10=5rem *//*this will specify the height and automatically relate the width of the img 
+  element with class "logo"*/
+  width: 8vw;
+}
+
+.heading-primary {
+  color: #FFF;
+  transform: uppercase;
+  backface-visibility: hidden; /*removes the shake in your animation its the entire heading primary
+  element that moves determines the back part of an element is visible or hidden for the user
+  just imagine we have an element and we rotate it to 180 degree so we have to 
+  see the back part of that element. When we use this backface-visibility that part becomes hidden.
+  So in this case we wont be rotating so we want it to be hidden. */
+  margin-bottom: 3rem; /* 30 divide by 10 = 3rem */
+}
+
+.header__text-box {  /*div class text-box*/
+  position: absolute;
+  top: 30%; /*In relation to the parent element class header*/
+  left: 50%; /*in relation tot he parent element class header*/
+  /*background-color: red;*/
+  transform: translate(-50%,-50%); /*in relation to the element itself allowing it to center */
+  text-align: center;
+}
+.heading-primary--main {
+  display: block;
+  font-size: 3rem;/* 35 divide by 10 = 3.5rem */
+  font-weight: 400;
+  letter-spacing: 3rem; /* 30 divide by 10 = 3rem */
+  /*this are the two properties that are required for an animation to work*/
+  animation-name: moveInLeft; /*this is the name of the animation we created*/
+  animation-duration: 1s; /*The duration how long our animation would work*/
+  animation-timing-function: ease-out; /*slower in the beginning and faster in the end*/
+  /*other animation properties
+  animation-delay: 3s;
+  animation-iteration-count:3; This will make animation to happen three times.
+  animation-timing-function: ease-in; defines how animation will proceed 
+  and on how fast or slow the parameters that we specify will happen over time.
+  It also has built in function like ease-out, ease-in, ease-in-out, linear, step-start,
+  step-end.
+  */
+
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;  /* 10 divide by 10 = 1rem */
+  font-weight: 400px;
+  letter-spacing: 1.6rem; /* 16 divide by 10 = 1.6rem */ 
+  /*
+  animation-name: moveInRight;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;*/
+  animation: moveInRight 1s ease-out;
+}
+
+/*CSS ANIMATION PART
+There are two types of animation in css, 
+First one is using the transition property and then change the properties that we want to animate
+on an event like when we hover on an element.*/
+/*Another tip would be when we dont want this animation to happen when we load the page
+we would like the animation to happen when we hover. Lets say we want the animation to happen
+to the logo
+.logo:hover {
+   animation: moveInRight 1s ease-out;
+   the Animation can be made to happen when we move to the logo. 
+} */
+@keyframes moveInLeft {
+  /*we can specify here in each moment of time when the animation will happen.*/
+  /*This is when the animation will start - initial state*/
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); /*Remember that the element will be coming from the left.*/
+    /*We use the translateX x is because we want it to animate from the x direction. Left to right. 
+    While the Y direction is from TOP to BOTTOM.*/
+    /*We want it coming from the left in the beginning so we give it negative value*/
+    /*Remember that a negative value goes to the left
+     and a positive value goes to the right like in mathematics.*/
+  
+  }
+  
+  60% {
+    transform: rotate(180deg);
+  }
+
+  /*We can also put some animation in the middle, like when at the moment when the animation is
+  at 80%, we can do any percentage here that we want.*/
+  80% {
+    transform: translateX(1rem); /*This allows us to move a little to the right 
+    our animation before positioning itself at 100%- this intermediate position is 
+    a bit more to the right. Remember that a positive value goes to the right.*/
+
+  }
+  /*This is when the animation will end - final state*/
+  100% {
+    opacity:1;
+    transform: translate(0); /*We just want to make it look the way it looks now
+    so we use Translate 0. Why zero because when we translate to zero it will look exactly
+    the way it looks right now.
+    */
+  
+  }
+  /*Note that for browser performance it is best to animate only two different properties
+  one is the opacity, and the transform property. This is what the browsers are optimize 
+  for. We can do alot from this two properties to make animation happen.
+  */
+ 
+  /*Remember that for an animation to work there are two properties we need to specify
+  animation-name: which is the name of the animation we just wrote "moveInLeft" 
+  and animation-duration.
+  */
+}
+
+@keyframes moveInRight {
+  0%{
+    opacity: 0;
+    transform: translateX(10rem); /* 100px divide by 10=1rem */
+  }
+  80%{
+    transform:translateX(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  } 
+}
+
+/*we want this animation to happen on this particular button so we 
+put a new class on the button. animated.*/
+@keyframes moveInBottom {
+  0%{
+    opacity: 0;
+    transform: translateY(-3rem); /*epsilon move up with a positive value and down with
+    a negative value.*/
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0);
+  } 
+}
+
+/*A neat trick You can use command D to select a property and make edits to it in visual
+studio code or . */
+
+/*Button ANimation 
+- What pseudo-elements and pseudo-classes are;
+- How and why to use the :: after pseudo-element.
+- How to create a creative hover animation effect using the transition property.
+It has the effect like it looks like getting bigger and then in the end it fades out at half a 
+second, it moves up a little bit and create a shadow and it looks like its moving up 
+when the shadow appears and when we click it goes down a little bit and the shadow dissapears.
+Hover it it elevates and as we click it it looks like it sgoing down.
+*/
+
+/*We can see that our css lines are getting long we are going to think about 
+architecture later. Getting this code ready is our first priority.*/
+
+/*We know that the btn class is a link, it is a pseudo-class, this are special states of
+a selector. This link here is a state of the button selector. Its like when the 
+user hovers on the element or on the checkbox is click or we wanna to select the last child and 
+many other possibilities we used pseudo-classes to style elements with a certain condition.
+It is a very important concept we are gonna use all the time.
+btn:visited - is the state when the user has clicked on the button once before and then
+sees the button again.  When we don't style a link it will appear like blue on the beginning
+and when we see it again it would look like purple. That is the default styling of links */
+/*We dont want the color and the underline, and we want to transform the text to uppercase.
+text-decoration none properties and the color would be gray.
+*/
+.btn:link, 
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none ;
+  padding: 1.5rem 4rem ; /*shorthand property of padding for top and bottom, and left and right*/
+  display: inline-block;
+  /*this button is an inline element that is why it is overlapping with the other element within
+  the div.and we should display it as an inline-block. In this way the box element will work
+  on this element as if it is only a normal block element. We should always do this if we want 
+  to give some padding, height or width to some elements. Another we want for this is for it to be
+  aligned to the center. Should we use transform or absolute positioning?
+  It is an inline block element so it is treated like as if it was text.
+  
+  All we have to do is to go to the text-box element or parent element and 
+  set its text-align property to the center which will include the button.*/
+
+  /*Here we want to give white space so we will use the margin at the bottom of 
+  the heading-primary so we add margin-bottom: 60px*/
+  border-radius: 10rem; /*this adds the rounded corners*/
+  transition: all .2s; /*transition property can help animate and specify which
+  properties we want to animate. In this case we can have all properties and specify time
+  this is the shorthand version of transition.
+  So the hover and the active will be animated in relation to the initial state and this 
+  sometimes causes a lot of confusion as to why the transition property has to be on the initial state
+  thats just how it works so in the initial state we can say that there can be a transition 
+  basically on all the properties and then on the hover and on the active state and the animation
+  is going to happen. 
+  */
+  position: relative;
+  font-size: 1.6rem;
+  
+}
+.btn:hover {
+  /*We will use pseudo-class for this event and we want the following:
+  - element to move up.
+  transform is a very impt element in creating effects where elements move around, rotate or stuf.
+  */
+  transform: translateY(-.7px); /*remember that the Y value moves up with - value and down with
+  + value.*/
+  box-shadow:0 1rem 2rem rgba(0,0,0,.2); /*in the box shadow we can specify a bunch of values
+  offset in the x direction. We dont want any shadow on the x direction and we only want it
+  on the epsilon direction.
+  In the epsilon we want some offset 10px. SO it will be 10px down.
+  Third value is the BLUR 20px so that we would have a really high blur. It makes for a blurry 
+  shadow so that it would look like that we are further away. 
+  
+  So in the ACTIVE box shadow we are going to reduce so that it would look like 
+  were back closer to the page. 
+  We can put a color rgba bec we want the color of the shadow to be transparent. then we can 
+  put a transparency value. Not completely black with .2 20% opacity
+  transparency value not to black we want it to be subtle.and not to be to visible. We can play 
+  around.
+  */
+}
+
+.btn:active {
+  /*When we click the element it will look different the active state, pseudo-class,*/
+  transform: translate(-1px); /*its a translate because it move and we are moving it 1 px up
+  -1px state, it is not in relation to the hover state but always to the initial state of 
+  the btn:link state.
+  */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); 
+  /* remember that when you have a point you dont write out the zero. You can 
+  and it works but its a coding practice to only put the dot 
+  its a practice that professionals use. */
+  /*remember that we want to make the 
+  shadow look smaller so that it would look closer to the page. and so further away from the 
+  user. so we want to decrease the y direction and the blur */
+}
+
+.btn--white {
+  background-color: #FFF;
+  color: #777;  
+}
+
+/*BUTTON part 2*/
+/*Pseudo element
+A white part on the button that zooms out when we hover in and out.
+-Allows us to style a certain parts of the elements.
+-The after pseudo element adds a virtual element right after the element we are selecting.
+We can then start to style that element.
+- 
+*/
+
+.btn::after {
+  /*the trick here is to add an element that looks exactly the button that we have and we 
+  put it behind the button and when we hover out of the button then the hidden pseduo element 
+  basically hide behind the button.*/
+  /*We always need to specify the content property doesnt matter what the content is
+  even if its empty but we have to specify it or otherwise it is not going to appear.*/
+  content: "";
+   /*We also need to specify the display property, we have to set the value
+   to an inline-block because the button that we have is also an inline block.*/
+  display: inline-block;
+  /*this will work because the after pseudo element is basically
+  treated like the child of the button element. When we say that we 
+  want to have the height and width 100% that is the 100% of the width of the button.
+  So suppose the button have a 100px height and 50px of width the pseudo element
+  will have the same dimensions if we set it to 100percent the border radius should also
+  be the same. And we want it to be white. */
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute; /*remember that this absolute positioning needs to have a reference
+  the reference is the first element with the relative position that it can find.In this case
+  it would be the header. Remember that we did that before. But we don't want it to be 
+  the header we want it to be the button. So we have to set the position property of the 
+  button to relative. So to now it should be hidden behind the button.
+  */
+  top: 0;
+  left: 0;
+  /*we need to set the z-index to minus 1*/
+  z-index: -1; /*the z-index defines the position of the element if they are
+  one on top of another. So this one is -1 so it gets behind the button.*/
+  transition: all .4s; /*we want this to take a little longer than the other one.*/
+}
+/*We need to create .btn-white::after IT will look like its part of our element. We want to 
+put it behind our actual button. HOw can we do it? We use the absolute positioning.*/
+.btn--white::after {
+  background-color: #FFF
+}
+
+/*When we hover on the button we want some certain styles to the after pseudo-elements.
+THis is only becomes an after pseudo-element only when we hover state on the button element.
+What do we want to happen we want it to be bigger. 
+We want the element to grow and 
+to fade out*/
+.btn:hover::after {
+  transform:scaleX(1.4) scaleY(1.6);/*scale simply increases the element, if we do scale(2) it will do double
+  the size as to before.
+  We want to animate this property so we need to do it in the initial state sto the initial
+  state is the .btn::after element
+  scale without any epsilon scales the entire element so if we use scaleX() it will scale on the 
+  x direction. There are different scales just like there are different 
+  translates, rotates or functions we can put into our transform...
+  */
+  
+  opacity: 0; /*The technique for fading something out it sets something to invisible.*/
+   
+}
+
+.btn--animated {
+  animation: moveInBottom 1s ease-out .75s;/*short hand property with 
+  animation-name,animation-duration, animation-timing-function, animation-delay
+  We can see here that the button is visible before the animation starts.
+  /* What should we do? We could put those properties in the initial state of the
+  button but it will be impractical. So we can use another animation property called
+  animation-fillmode*/ 
+  animation-fill-mode: backwards; /*This will automatically apply the styles of the
+  zero percent before the animation starts 
+  the 0% { opacity:0; transform:translateY(30px)} this will now be applied through
+  animation fill mode.*/
+    
+}

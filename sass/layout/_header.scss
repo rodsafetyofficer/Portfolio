@@ -1,0 +1,40 @@
+.header {
+    height: 80vh;
+    background-image: linear-gradient(to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8) ), 
+     url(../img/cidratio.jpg);/*(../img/Cidemo.jpg)*/
+    background-size: cover; 
+    background-position:top;
+    -webkit-clip-path:polygon(0 0, 100% 0, 100% 69vh, 0 60%);
+    
+    clip-path:polygon(0 0, 100% 0, 100% 69vh, 0 75%);
+    position: relative;
+
+    @include respond(phone) {
+      -webkit-clip-path:polygon(0 0, 100% 0, 100% 70vh, 0 60%);
+      clip-path:polygon(0 0, 100% 0, 100% 70vh, 0 75%);
+      position: relative;
+    
+    }
+    
+    &__logo-box {
+     position:  absolute;  
+     top: 2rem; 
+     left: 3rem;
+    }
+
+     &__logo {
+     width: 8vw;
+   }
+
+     &__text-box {  /*div class text-box*/
+     position: absolute;
+     top: 30%; /*In relation to the parent element class header*/
+     left: 50%; /*in relation tot he parent element class header*/
+     /*background-color: red;*/
+     transform: translate(-50%,-50%); /*in relation to the element itself allowing it to center */
+     text-align: center;
+   }
+}
+/*.header__logo-box {}*/
